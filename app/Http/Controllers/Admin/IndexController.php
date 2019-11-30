@@ -49,6 +49,6 @@ class IndexController extends Controller
 
 //        $res = Permission::create(['name' => 'edit.articles5']);
 
-        dd($user);
+        return $this->success('ok',$user);
     }
 }
