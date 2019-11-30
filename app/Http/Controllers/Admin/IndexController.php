@@ -9,7 +9,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -40,15 +39,6 @@ class IndexController extends Controller
 //                $message->attach($attachment,['as' => 'test.xls']);
             }
         );
-    }
-
-    /**
-     * 获取token
-     */
-    public function token(){
-        $user = User::find(1);
-        $token = auth('admin')->login($user);
-        dd($token);
     }
 
     /**

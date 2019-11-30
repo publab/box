@@ -18,7 +18,7 @@ Route::get('/', ['as' => 'index','uses' => 'IndexController@index']);
 Route::get('mail', ['as' => 'mail','uses' => 'IndexController@mail']);
 
 //token
-Route::get('token', ['as' => 'token','uses' => 'IndexController@token']);
+Route::post('token', ['as' => 'token','uses' => 'LoginController@token']);
 
 Route::group(['middleware' => ['auth:admin']], function () {
     Route::any('userinfo', ['as' => 'userinfo','uses' => 'IndexController@userinfo']);
