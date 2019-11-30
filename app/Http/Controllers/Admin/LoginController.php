@@ -26,4 +26,13 @@ class LoginController extends Controller
         ]);
     }
 
+    /**
+     * 刷新token
+     */
+    public function refresh(){
+        return $this->success('success',[
+            'token' => auth('admin')->refresh()
+        ]);
+    }
+
 }

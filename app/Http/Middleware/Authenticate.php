@@ -18,25 +18,25 @@ class Authenticate extends Middleware
      *
      * @throws \Illuminate\Auth\AuthenticationException
      */
-    protected function authenticate($request, array $guards)
-    {
-        if (empty($guards)) {
-            $guards = [null];
-        }
-
-        foreach ($guards as $guard) {
-
-            $g = $this->auth->guard($guard);
-
-            if ($g->check() && ( $g instanceof SessionGuard || ($g instanceof JWTGuard && $g->payload()->get('iss') == url('token')) ) ) {
-                return $this->auth->shouldUse($guard);
-            }
-        }
-
-        throw new AuthenticationException(
-            'Unauthenticated.', $guards, $this->redirectTo($request)
-        );
-    }
+//    protected function authenticate($request, array $guards)
+//    {
+//        if (empty($guards)) {
+//            $guards = [null];
+//        }
+//
+//        foreach ($guards as $guard) {
+//
+//            $g = $this->auth->guard($guard);
+//
+//            if ($g->check() && ( $g instanceof SessionGuard || ($g instanceof JWTGuard && $g->payload()->get('iss') == url('token') ) ) ) {
+//                return $this->auth->shouldUse($guard);
+//            }
+//        }
+//
+//        throw new AuthenticationException(
+//            'Unauthenticated.', $guards, $this->redirectTo($request)
+//        );
+//    }
 
     /**
      * Get the path the user should be redirected to when they are not authenticated.
