@@ -20,6 +20,10 @@ class IndexController extends Controller
      * index
      */
     public function index(){
+
+        $reeee = \Hash::make('123456');
+        $res = \Hash::check('123456',$reeee);
+        dd('admin',$reeee,$res);
         return 'admin';
     }
 
