@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             'email' => '89340545@qq.com',
             'password' => bcrypt('123456'),
             'type' => User::ADMIN_TYPE + User::TENANT_TYPE + User::MEMBER_TYPE,
+            'created_at' => date('Y-m-d H:i:s'),
         ]);
     }
 }

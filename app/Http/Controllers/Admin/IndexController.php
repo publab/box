@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Resources\User as UserResource;
 
 class IndexController extends Controller
 {
@@ -20,10 +21,6 @@ class IndexController extends Controller
      * index
      */
     public function index(){
-
-        $reeee = \Hash::make('123456');
-        $res = \Hash::check('123456',$reeee);
-        dd('admin',$reeee,$res);
         return 'admin';
     }
 
@@ -53,6 +50,6 @@ class IndexController extends Controller
 
 //        $res = Permission::create(['name' => 'edit.articles5']);
 
-        return $this->success('ok',$user);
+        return new UserResource($user);
     }
 }
