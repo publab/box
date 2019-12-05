@@ -13,12 +13,19 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable,HasRoles;
 
     /**
+     * if add new type please use 1/2/4/8/16/32/.....
+     */
+    const ADMIN_TYPE = 1;
+    const TENANT_TYPE = 2;
+    const MEMBER_TYPE = 4;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'mobile', 'type',
     ];
 
     /**
