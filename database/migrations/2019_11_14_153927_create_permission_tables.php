@@ -18,8 +18,15 @@ class CreatePermissionTables extends Migration
 
         Schema::create($tableNames['permissions'], function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('guard_name');
+            $table->string('guard_name',10)     ->comment('权限名称');
+            $table->string('name',60)           ->unique()->comment('路由名称');
+            $table->integer('parent_id')        ->default(0);
+            $table->string('href',60)           ->default('')->comment('Web路由名称');
+            $table->string('display_name',30)   ->default('')->comment('显示名称');
+            $table->string('icon',20)           ->default('')->comment('图标');
+            $table->tinyInteger('is_menu')      ->default(2)->comment('1是 2不是');
+            $table->tinyInteger('is_work')      ->default(2)->comment('1正常 2冻结');
+            $table->integer('sorts')            ->default(0)->comment('排序');
             $table->timestamps();
         });
 

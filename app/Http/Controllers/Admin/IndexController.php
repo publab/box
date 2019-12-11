@@ -8,13 +8,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Resources\User as UserResource;
 
-class IndexController extends Controller
+class IndexController extends InitController
 {
     /**
      * @return string
