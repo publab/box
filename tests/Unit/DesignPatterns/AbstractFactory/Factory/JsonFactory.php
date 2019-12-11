@@ -18,7 +18,6 @@ use Tests\Unit\DesignPatterns\AbstractFactory\Product\Json\Text;
  */
 class JsonFactory extends AbstractFactory
 {
-
     /**
      * 创建图片组件
      *

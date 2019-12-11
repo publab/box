@@ -39,6 +39,8 @@ class AbstractFactoryTest extends TestCase
             $factory->createPicture('/image.jpg', 'laravel-academy'),
             $factory->createText('LaravelAcademy.org')
         );
+
+        print_r($article);
         $this->assertContainsOnly('Tests\Unit\DesignPatterns\AbstractFactory\Media\MediaInterface', $article);
     }
 }
