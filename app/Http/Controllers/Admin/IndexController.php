@@ -20,6 +20,7 @@ class IndexController extends InitController
      * index
      */
     public function index(){
+        echo \Easypay::test_rtn('dfsdf');
         return 'admin';
     }
 
