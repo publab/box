@@ -1,0 +1,25 @@
+{
+    "name": "publab/easypay",
+    "authors": [
+        {
+            "name": "duanzhiwei",
+            "email": "89340545@qq.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Publab\\Easypay\\": "src"
+      }
+    },
+    "require": {},
+    "extra": {
+      "laravel": {
+        "providers": [
+          "Publab\\Easypay\\EasypayServiceProvider"
+        ],
+        "aliases": {
+          "Easypay": "Publab\\Easypay\\Facades\\Easypay"
+        }
+      }
+    }
+}
