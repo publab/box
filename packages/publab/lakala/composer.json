@@ -1,0 +1,25 @@
+{
+    "name": "publab/lakala",
+    "authors": [
+        {
+            "name": "duanzhiwei",
+            "email": "89340545@qq.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Publab\\Lakala\\": "src"
+      }
+    },
+    "require": {},
+    "extra": {
+      "laravel": {
+        "providers": [
+          "Publab\\Lakala\\LakalaServiceProvider"
+        ],
+        "aliases": {
+          "Easypay": "Publab\\Lakala\\Facades\\Lakala"
+        }
+      }
+    }
+}

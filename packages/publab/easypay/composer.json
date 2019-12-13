@@ -11,7 +11,12 @@
         "Publab\\Easypay\\": "src"
       }
     },
-    "require": {},
+    "require": {
+      "ignited/laravel-omnipay": "^3.*",
+      "lokielse/omnipay-alipay": "^3.*",
+      "lokielse/omnipay-unionpay": "^3.*",
+      "lokielse/omnipay-wechatpay": "^3.*"
+    },
     "extra": {
       "laravel": {
         "providers": [
