@@ -20,7 +20,8 @@ class IndexController extends InitController
      * index
      */
     public function index(){
-//        echo \Lakala::test_rtn('dfsdf');
+        $res =  \Lakala::upload(['2222222222'])->send();
+        dd($res);
         return 'admin';
     }
 
