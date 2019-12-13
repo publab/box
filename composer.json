@@ -34,9 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Publab\\EasyPay\\": "packages/publab/easypay",
-            "Publab\\Lakala\\": "packages/publab/lakala"
+            "App\\": "app/"
         },
         "classmap": [
             "database/seeds",
