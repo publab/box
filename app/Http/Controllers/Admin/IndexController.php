@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Resources\User as UserResource;
+use Illuminate\Support\Facades\Redis;
 
 class IndexController extends InitController
 {
@@ -20,6 +21,11 @@ class IndexController extends InitController
      * index
      */
     public function index(){
+
+//        $res = Redis::set('name', 'Taylor');
+//        $res = Redis::get('name');
+//        dd($res);
+
         return 'admin';
     }
 
