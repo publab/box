@@ -6,7 +6,7 @@
  * Time: 17:25
  */
 
-namespace App\Jobs\Cron;
+namespace App\Console\Cron;
 
 use Hhxsv5\LaravelS\Swoole\Timer\CronJob;
 use Illuminate\Support\Facades\Log;

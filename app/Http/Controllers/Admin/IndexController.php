@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\Test;
 use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -25,6 +26,8 @@ class IndexController extends InitController
 //        $res = Redis::set('name', 'Taylor');
 //        $res = Redis::get('name');
 //        dd($res);
+
+//        event(new Test());
 
         return 'admin';
     }

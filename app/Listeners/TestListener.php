@@ -6,8 +6,9 @@ use App\Events\Test;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class TestListener
+class TestListener implements ShouldQueue
 {
+    use InteractsWithQueue;
     /**
      * Create the event listener.
      *
@@ -27,5 +28,6 @@ class TestListener
     public function handle(Test $event)
     {
         //
+        info('innnnnnnnnnnnnnnnnn');
     }
 }
