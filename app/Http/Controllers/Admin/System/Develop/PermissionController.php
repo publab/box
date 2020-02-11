@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Admin\System\Develop;
 
 use App\Http\Controllers\Admin\InitController;
-use App\Models\System\Develop\SysPermission;
+use App\Models\System\SysPermission;
 use Illuminate\Http\Request;
 
 class PermissionController extends InitController
@@ -20,7 +20,8 @@ class PermissionController extends InitController
      */
     public function index(Request $request)
     {
-        return $this->error('这里是列表',[1,2,3,4,5]);
+        $permission = SysPermission::getPermissions();
+        return $this->success('这里是列表',$permission);
     }
 
     /**

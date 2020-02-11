@@ -6,7 +6,7 @@
  * Time: 22:04
  */
 
-namespace App\Models\System\Develop;
+namespace App\Models\System;
 
 use Spatie\Permission\Models\Role;
 

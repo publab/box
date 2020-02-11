@@ -9,10 +9,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Events\Test;
+use App\Resources\UserResource;
 use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use App\Resources\User as UserResource;
 use Illuminate\Support\Facades\Redis;
 
 class IndexController extends InitController

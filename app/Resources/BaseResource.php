@@ -10,7 +10,7 @@ namespace App\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Base extends JsonResource
+class BaseResource extends JsonResource
 {
 
     /**
