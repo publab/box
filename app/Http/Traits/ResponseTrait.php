@@ -9,6 +9,8 @@
 namespace App\Http\Traits;
 
 
+use App\Resources\Base;
+
 trait ResponseTrait
 {
     /**
@@ -43,10 +45,12 @@ trait ResponseTrait
      */
     private function toResponseData($message, $status, $data=[])
     {
-        return response()->json([
-            'data' => $data,
-            'message' => $message,
-            'status' => $status,
+        $respones = new Base([
+            'data' => $data
         ]);
+        $respones->status = $status;
+        $respones->message = $message;
+
+        return $respones;
     }
 }

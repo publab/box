@@ -20,7 +20,7 @@ class PermissionController extends InitController
      */
     public function index(Request $request)
     {
-
+        return $this->error('这里是列表',[1,2,3,4,5]);
     }
 
     /**

@@ -22,8 +22,8 @@ class Base extends JsonResource
     public function with($request)
     {
         return [
-            'status' => 1,
-            'message' => 'success'
+            'status' => $this->status ?? 1,
+            'message' => $this->message ?? 'success'
         ];
     }
 
