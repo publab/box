@@ -20,7 +20,7 @@ class PermissionController extends InitController
      */
     public function index(Request $request)
     {
-        $permission = SysPermission::getPermissions();
+        $permission = SysPermission::getPermissions(['guard_name' => config('auth.defaults.guard')]);
         return $this->success('这里是列表',$permission);
     }
 
@@ -31,7 +31,7 @@ class PermissionController extends InitController
     public function create(Request $request){
         SysPermission::create([
             'name' => 'duanzhiwei',
-            'href' => 'duanzhiwei',
+            'display_name' => 'duanzhiwei',
         ]);
 
         return $this->success('success');
