@@ -29,10 +29,23 @@ class PermissionController extends InitController
      * 创建权限
      */
     public function create(Request $request){
-        SysPermission::create([
-            'name' => 'duanzhiwei',
-            'display_name' => 'duanzhiwei',
+
+        $data = $request->data ?? [];
+
+        $validator = validator($data, [
+            'display_name' => ['required'],
+            'name' => ['required','unique:sys_permissions'],
+        ], [
+            'display_name.required' => '请填写显示名称',
+            'name.required' => '请填权限名称',
+            'name.unique' => '权限名称已存在',
         ]);
+
+        if ($validator->fails()) {
+            return $this->error($validator->errors()->first());
+        }
+
+        SysPermission::create($data);
 
         return $this->success('success');
     }

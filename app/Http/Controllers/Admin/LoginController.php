@@ -21,16 +21,13 @@ class LoginController extends InitController
 
         $data = $request->data ?? [];
 
-        $rules = [
+        $validator = validator($data, [
             'mobile' => ['required'],
             'password' => ['required'],
-        ];
-        $message = [
+        ], [
             'mobile.required' => '请填写手机号',
             'password.required' => '请填密码',
-        ];
-
-        $validator = validator($data, $rules, $message);
+        ]);
 
         if ($validator->fails()) {
             return $this->error($validator->errors()->first());
