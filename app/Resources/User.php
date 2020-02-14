@@ -1,16 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2020/2/11
- * Time: 22:27
- */
 
-namespace App\Resources\System;
+namespace App\Resources;
 
-use App\Resources\BaseResource;
-
-class SysPermissionResource extends BaseResource
+class User extends Base
 {
     /**
      * Transform the resource into an array.
@@ -22,6 +14,10 @@ class SysPermissionResource extends BaseResource
     {
         return [
             'id' => $this->id ?? 0,
+            'mobile' => $this->mobile,
+            'name' => $this->name,
+            'email' => $this->email,
+            'created_at' => (string)$this->created_at,
         ];
     }
 }

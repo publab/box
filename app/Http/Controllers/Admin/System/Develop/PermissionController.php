@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin\System\Develop;
 
 use App\Http\Controllers\Admin\InitController;
 use App\Models\System\SysPermission;
+use App\Resources\System\SysPermissionCollection;
 use Illuminate\Http\Request;
 
 class PermissionController extends InitController
@@ -20,8 +21,8 @@ class PermissionController extends InitController
      */
     public function index(Request $request)
     {
-        $permission = SysPermission::getPermissions(['guard_name' => config('auth.defaults.guard')]);
-        return $this->success('这里是列表',$permission);
+        $permission = SysPermission::getPermissions(['guard_name' => config('auth.defaults.guard')])->buildTree()->mergeTree();
+        return new SysPermissionCollection($permission);
     }
 
     /**

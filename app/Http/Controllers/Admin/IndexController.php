@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Events\Test;
-use App\Resources\UserResource;
+use App\Resources\User as UserResource;
 use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;

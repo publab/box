@@ -9,7 +9,7 @@
 namespace App\Http\Traits;
 
 
-use App\Resources\BaseResource;
+use App\Resources\Base;
 
 trait ResponseTrait
 {
@@ -45,7 +45,7 @@ trait ResponseTrait
      */
     private function toResponseData($message, $status, $data=[])
     {
-        $respones = new BaseResource([
+        $respones = new Base([
             'data' => $data
         ]);
         $respones->status = $status;
