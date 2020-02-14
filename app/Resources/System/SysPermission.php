@@ -21,7 +21,7 @@ class SysPermission extends Base
     public function toArray($request)
     {
         return [
-            'id'            => $this->id,
+            'key'            => $this->id,
             'guard_name'    => $this->guard_name,
             'name'          => $this->name,
             'display_name'  => $this->display_name,

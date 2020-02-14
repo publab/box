@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin\System\Develop;
 
 use App\Http\Controllers\Admin\InitController;
 use App\Models\System\SysPermission;
+use App\Resources\System\SysPermission as SysPermissionResource;
 use App\Resources\System\SysPermissionCollection;
 use Illuminate\Http\Request;
 
@@ -21,9 +22,27 @@ class PermissionController extends InitController
      */
     public function index(Request $request)
     {
-        $permission = SysPermission::getPermissions(['guard_name' => config('auth.defaults.guard')])->buildTree()->mergeTree();
-        return $permission;
+        $where = [
+            'guard_name' => config('auth.defaults.guard'),
+            'is_menu' => SysPermission::IS_MENU,
+            'is_work' => SysPermission::IS_WORK,
+        ];
+
+        if(!$request->menu){
+           unset($where['is_menu']);
+           unset($where['is_work']);
+        }
+
+        $permission = SysPermission::getPermissions($where)->buildTree()->mergeTree();
         return new SysPermissionCollection($permission);
+    }
+
+    /**
+     * @param Request $request
+     * 权限详情
+     */
+    public function detail(Request $request, SysPermission $model = null){
+        return new SysPermissionResource($model);
     }
 
     /**
