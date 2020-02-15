@@ -76,7 +76,7 @@ class PermissionController extends InitController
      * 权限更新
      */
     public function update(Request $request,SysPermission $model = null){
-        $data = $request->data ?? [];
+        $data = array_filter($request->data ?? []);
 
         $validator = validator($data, [
             'display_name' => ['required'],
