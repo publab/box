@@ -51,7 +51,7 @@ class PermissionController extends InitController
      */
     public function create(Request $request){
 
-        $data = $request->data ?? [];
+        $data = array_filter($request->data ?? []);
 
         $validator = validator($data, [
             'display_name' => ['required'],
@@ -67,6 +67,31 @@ class PermissionController extends InitController
         }
 
         SysPermission::create($data);
+
+        return $this->success('success');
+    }
+
+    /**
+     * @param Request $request
+     * 权限更新
+     */
+    public function update(Request $request,SysPermission $model = null){
+        $data = $request->data ?? [];
+
+        $validator = validator($data, [
+            'display_name' => ['required'],
+            'name' => ['required','unique:sys_permissions,name,'.$model->id],
+        ], [
+            'display_name.required' => '请填写显示名称',
+            'name.required' => '请填权限名称',
+            'name.unique' => '权限名称已存在',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->error($validator->errors()->first());
+        }
+
+        $model->update($data);
 
         return $this->success('success');
     }
