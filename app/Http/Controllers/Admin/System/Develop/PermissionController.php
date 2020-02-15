@@ -33,7 +33,7 @@ class PermissionController extends InitController
            unset($where['is_work']);
         }
 
-        $permission = SysPermission::getPermissions($where)->buildTree()->mergeTree();
+        $permission = SysPermission::where($where)->orderBy('sorts','DESC')->get()->buildTree()->mergeTree();
         return new SysPermissionCollection($permission);
     }
 
@@ -93,6 +93,22 @@ class PermissionController extends InitController
 
         $model->update($data);
 
+        return $this->success('success');
+    }
+
+    /**
+     * @param ysPermission|null $model
+     * 权限删除
+     */
+    public function delete(SysPermission $model = null){
+        $permission = SysPermission::getPermissions([
+            'parent_id' => $model['id']
+        ])->count();
+
+        if($permission > 0){
+            return $this->error('请删除全部子模块');
+        }
+        $model->delete();
         return $this->success('success');
     }
 }
