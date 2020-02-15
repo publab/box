@@ -51,7 +51,7 @@ class PermissionController extends InitController
      */
     public function create(Request $request){
 
-        $data = array_filter($request->data ?? []);
+        $data = $request->data ?? [];
 
         $validator = validator($data, [
             'display_name' => ['required'],
@@ -76,7 +76,7 @@ class PermissionController extends InitController
      * 权限更新
      */
     public function update(Request $request,SysPermission $model = null){
-        $data = array_filter($request->data ?? []);
+        $data = $request->data ?? [];
 
         $validator = validator($data, [
             'display_name' => ['required'],
