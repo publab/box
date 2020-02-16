@@ -35,6 +35,10 @@ Route::group(['middleware' => ['auth:admin']], function () {
             Route::post('permission/delete/{model}', ['as' => 'permission.delete','uses' => 'PermissionController@delete']);
 
             Route::post('role', ['as' => 'role','uses' => 'RoleController@index']);
+            Route::post('role/create', ['as' => 'role.create','uses' => 'RoleController@create']);
+            Route::post('role/detail/{model}', ['as' => 'role.detail','uses' => 'RoleController@detail']);
+            Route::post('role/update/{model}', ['as' => 'role.update','uses' => 'RoleController@update']);
+            Route::post('role/delete/{model}', ['as' => 'role.delete','uses' => 'RoleController@delete']);
 
         });
     });

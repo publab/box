@@ -24,6 +24,8 @@ class SysRole extends Base
             'key'           => $this->id,
             'name'          => $this->name,
             'guard_name'    => $this->guard_name,
+            'display_name'  => $this->display_name,
+            'is_work'       => $this->is_work,
         ];
     }
 }
