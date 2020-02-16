@@ -108,7 +108,9 @@ class PermissionController extends InitController
         if($permission > 0){
             return $this->error('请删除全部子模块');
         }
-        $model->delete();
+        $this->transaction(function () use ($model){
+            $model->delete();
+        });
         return $this->success('success');
     }
 }
