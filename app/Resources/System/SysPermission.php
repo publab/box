@@ -21,7 +21,8 @@ class SysPermission extends Base
     public function toArray($request)
     {
         return [
-            'key'            => $this->id,
+            'id'            => $this->id,
+            'key'           => $this->id,
             'guard_name'    => $this->guard_name,
             'name'          => $this->name,
             'display_name'  => $this->display_name,
@@ -31,6 +32,9 @@ class SysPermission extends Base
             'is_work'       => $this->is_work,
             'sorts'         => $this->sorts,
             'level'         => $this->when($this->level, $this->level),
+            $this->mergeWhen($this->children, [
+                'children'      => SysPermission::collection($this->children ?? []),
+            ]),
         ];
     }
 }

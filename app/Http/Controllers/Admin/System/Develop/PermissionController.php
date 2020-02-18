@@ -24,16 +24,19 @@ class PermissionController extends InitController
     {
         $where = [
             'guard_name' => config('auth.defaults.guard'),
-            'is_menu' => SysPermission::IS_MENU,
-            'is_work' => SysPermission::IS_WORK,
         ];
 
-        if(!$request->menu){
-           unset($where['is_menu']);
-           unset($where['is_work']);
+        if($request->menu){
+           $where['is_menu'] = SysPermission::IS_MENU;
+           $where['is_work'] = SysPermission::IS_WORK;
         }
 
-        $permission = SysPermission::where($where)->orderBy('sorts','DESC')->get()->buildTree()->mergeTree();
+        $permission = SysPermission::where($where)->orderBy('sorts','DESC')->get()->buildTree();
+
+        if($request->merge){
+            $permission = $permission->mergeTree();
+        }
+
         return new SysPermissionCollection($permission);
     }
 
