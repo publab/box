@@ -46,10 +46,10 @@ class RoleController extends InitController
         $data = $request->data ?? [];
 
         $validator = validator($data, [
-            'display_name' => ['required'],
+            'title' => ['required'],
             'name' => ['required','unique:sys_roles'],
         ], [
-            'display_name.required' => '请填写显示名称',
+            'title.required' => '请填写显示名称',
             'name.required' => '请填权限名称',
             'name.unique' => '权限名称已存在',
         ]);
@@ -71,10 +71,10 @@ class RoleController extends InitController
         $data = $request->data ?? [];
 
         $validator = validator($data, [
-            'display_name' => ['required'],
+            'title' => ['required'],
             'name' => ['required','unique:sys_roles,name,'.$model->id],
         ], [
-            'display_name.required' => '请填写显示名称',
+            'title.required' => '请填写显示名称',
             'name.required' => '请填权限名称',
             'name.unique' => '角色名称已存在',
         ]);
