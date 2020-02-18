@@ -26,6 +26,7 @@ class SysPermission extends Base
             'guard_name'    => $this->guard_name,
             'name'          => $this->name,
             'display_name'  => $this->display_name,
+            'title'         => $this->display_name,
             'parent_id'     => $this->parent_id,
             'icon'          => $this->icon,
             'is_menu'       => $this->is_menu,

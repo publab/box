@@ -26,19 +26,20 @@ class CollectionMacroServiceProvider extends ServiceProvider
             $list = $list->filter(function ($item) use (&$parent_id) {
                 return $item->$parent_id;
             });
-            $builder = function (&$childs) use (&$builder, &$list, &$children, &$parent_id) {
+            $builder = function (&$childs,$level=0) use (&$builder, &$list, &$children, &$parent_id) {
                 if (!$childs) {
                     return;
                 }
                 foreach ($childs as $child) {
                     $id = $child->id;
+                    $child->level = ++$level;
                     $child->$children = $list->filter(function ($item) use ($id, $parent_id) {
                         return $item->$parent_id == $id;
                     });
                     $list = $list->filter(function ($item) use ($id, $parent_id) {
                         return $item->$parent_id != $id;
                     });
-                    $builder($child->$children);
+                    $builder($child->$children,$level);
                 }
             };
             $builder($tree);
