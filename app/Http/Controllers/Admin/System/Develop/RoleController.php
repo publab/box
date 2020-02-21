@@ -58,7 +58,8 @@ class RoleController extends InitController
             return $this->error($validator->errors()->first());
         }
 
-        SysRole::create($data);
+        $model = SysRole::create($data);
+        $model->syncPermissions($request->permission ?? []);
 
         return $this->success('success');
     }
@@ -84,6 +85,7 @@ class RoleController extends InitController
         }
 
         $model->update($data);
+        $model->syncPermissions($request->permission ?? []);
 
         return $this->success('success');
     }

@@ -26,6 +26,7 @@ class SysRole extends Base
             'guard_name'    => $this->guard_name,
             'title'         => $this->title,
             'is_work'       => $this->is_work,
+            'permission'    => $this->permissions()->pluck('id')
         ];
     }
 }
