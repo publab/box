@@ -20,13 +20,18 @@ class SysRole extends Base
      */
     public function toArray($request)
     {
-        return [
+        $data = [
             'key'           => $this->id,
             'name'          => $this->name,
             'guard_name'    => $this->guard_name,
             'title'         => $this->title,
             'is_work'       => $this->is_work,
-            'permission'    => $this->permissions()->pluck('id')
         ];
+
+        if($request->permission){
+            $data['permission'] = $this->permissions()->pluck('id');
+        }
+
+        return $data;
     }
 }
