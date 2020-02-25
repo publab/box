@@ -22,7 +22,6 @@ class SysPermission extends Base
     {
         $data = [
             'id'            => $this->id,
-            'key'           => $this->id,
             'guard_name'    => $this->guard_name,
             'name'          => $this->name,
             'title'         => $this->title,

@@ -21,7 +21,7 @@ class SysRole extends Base
     public function toArray($request)
     {
         $data = [
-            'key'           => $this->id,
+            'id'            => $this->id,
             'name'          => $this->name,
             'guard_name'    => $this->guard_name,
             'title'         => $this->title,
