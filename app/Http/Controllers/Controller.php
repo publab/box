@@ -13,7 +13,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ResponseTrait;
 
-    public $pagesize = 20;
+    public $pagesize = 15;
 
     public function transaction(callable $call){
         try {
