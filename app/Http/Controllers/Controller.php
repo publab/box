@@ -13,6 +13,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ResponseTrait;
 
+    public $pagesize = 20;
+
     public function transaction(callable $call){
         try {
             DB::beginTransaction();

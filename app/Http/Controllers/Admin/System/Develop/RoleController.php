@@ -25,7 +25,7 @@ class RoleController extends InitController
     {
         $roles = SysRole::where([
             'guard_name' => config('auth.defaults.guard'),
-        ])->orderBy('id','asc')->paginate();
+        ])->orderBy('id','asc')->paginate($this->pagesize);
 
         return new SysRoleCollection($roles);
     }
