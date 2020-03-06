@@ -13,7 +13,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ResponseTrait;
 
-    public $pagesize = 15;
+    public function pagesize(){
+        return request()->pageSize ?? 15;
+    }
 
     public function transaction(callable $call){
         try {
