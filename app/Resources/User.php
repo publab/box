@@ -16,6 +16,7 @@ class User extends Base
             'id' => $this->id ?? 0,
             'mobile' => $this->mobile,
             'name' => $this->name,
+            'avatar' => $this->avatar,
             'email' => $this->email,
             'created_at' => (string)$this->created_at,
         ];
