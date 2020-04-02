@@ -26,7 +26,6 @@ class SysPermission extends Base
             'name'          => $this->name,
             'title'         => $this->title,
             'parent_id'     => $this->parent_id,
-            'icon'          => $this->icon,
             'is_menu'       => $this->is_menu,
             'is_work'       => $this->is_work,
             'sorts'         => $this->sorts,

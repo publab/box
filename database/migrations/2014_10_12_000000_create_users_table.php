@@ -16,8 +16,9 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('mobile',11)->unique();
-            $table->string('name',50);
-            $table->string('email',50);
+            $table->string('name',50)->default('');
+            $table->string('avatar')->default('');
+            $table->string('email',50)->default('');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->tinyInteger('type')->default(\App\Models\User::MEMBER_TYPE)->comment('User中备注');
