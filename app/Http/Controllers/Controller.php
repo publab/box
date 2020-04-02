@@ -17,16 +17,16 @@ class Controller extends BaseController
         return request()->pageSize ?? 15;
     }
 
-    public function transaction(callable $call){
+    public function exception(callable $call, $db = false){
         try {
-            DB::beginTransaction();
-            call_user_func($call);
-            DB::commit();
-            return true;
+            $db && DB::beginTransaction();
+            $back = call_user_func($call);
+            $db && DB::commit();
+            return $back;
         }catch (\Exception $ex) {
-            DB::rollBack();
+            $db && DB::rollBack();
             info(__CLASS__ . ' | ' . __FUNCTION__ . ' | ' . $ex->getFile() . ' | ' . $ex->getLine() . ' | error = ' . $ex->getMessage());
-            return false;
+            return $this->error($ex->getMessage());
         }
     }
 }

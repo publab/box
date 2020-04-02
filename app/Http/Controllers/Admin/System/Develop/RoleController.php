@@ -96,7 +96,7 @@ class RoleController extends InitController
      */
     public function delete(SysRole $model = null){
 
-        $this->transaction(function () use ($model){
+        $this->exception(function () use ($model){
             $model->delete();
         });
         return $this->success('success');
