@@ -55,7 +55,7 @@ class UploadController extends Controller
 
             $urls = [];
             foreach ($uploadFiles as $file){
-                $urls[] = $this->upload->image('storage/images/'.date('Y/m/d'),$file);
+                $urls[] = config('app.url').'/'.$this->upload->image('storage/images/'.date('Y/m/d'),$file);
             }
             return $this->success('上传成功',$urls);
 
