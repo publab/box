@@ -8,15 +8,16 @@
 
 namespace App\Packages\Filer\Controller;
 
-use App\Http\Controllers\Controller;
-use App\Http\Traits\ResponseTrait;
 use App\Packages\Filer\Interfaces\UploadInterface;
+use App\Http\Traits\ApiResponse;
+use App\Http\Traits\Exception;
+use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 
 class UploadController extends Controller
 {
-    use ResponseTrait;
+    use ApiResponse,Exception;
 
     protected $upload;
 
@@ -37,7 +38,7 @@ class UploadController extends Controller
      */
     public function image(Request $request)
     {
-        $this->exception(function ()use($request){
+        return $this->exception(function ()use($request){
 
             $uploadFiles = $request->file('files') ?? [];
             if($uploadFiles instanceof UploadedFile){
@@ -59,7 +60,6 @@ class UploadController extends Controller
             return $this->success('上传成功',$urls);
 
         });
-
     }
 
     /**
@@ -84,6 +84,11 @@ class UploadController extends Controller
         return $this->success('删除成功',$result);
     }
 
+    /**
+     * 验证允许文件类型
+     * @param $files
+     * @param $allowedTypes
+     */
     public function checkMimeTypes($files,$allowedTypes){
         collect($files)->each(function ($file)use($allowedTypes){
             if(!in_array($file->getMimeType(), $allowedTypes)){
