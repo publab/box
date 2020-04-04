@@ -8,16 +8,15 @@
 
 namespace App\Packages\Filer\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Http\Traits\ResponseTrait;
 use App\Packages\Filer\Interfaces\UploadInterface;
-use App\Http\Traits\Exception;
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 
 class UploadController extends Controller
 {
-    use ResponseTrait,Exception;
+    use ResponseTrait;
 
     protected $upload;
 
