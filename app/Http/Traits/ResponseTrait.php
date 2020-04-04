@@ -45,12 +45,6 @@ trait ResponseTrait
      */
     private function toResponseData($message, $status, $data=[])
     {
-        $respones = new Base([
-            'data' => $data
-        ]);
-        $respones->status = $status;
-        $respones->message = $message;
-
-        return $respones;
+        return response()->json($message == 'only' ? $data : ['data' => $data, 'status' => $status, 'message' => $message,])->setCallback(request()->input('callback'));
     }
 }

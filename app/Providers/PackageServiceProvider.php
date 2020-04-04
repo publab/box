@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Packages\Filer\UploadServiceProvider;
+use App\Packages\UEditor\UEditorServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class PackageServiceProvider extends ServiceProvider
@@ -15,6 +16,7 @@ class PackageServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(UploadServiceProvider::class);
+        $this->app->register(UEditorServiceProvider::class);
     }
 
     /**

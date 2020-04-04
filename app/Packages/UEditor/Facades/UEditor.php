@@ -23,8 +23,7 @@ class UEditor
         app()->make('router')->group([
             'prefix' => 'ueditor'
         ],function ($route){
-            $route->any('config','\App\Packages\UEditor\Controller\UEditorController@config');
-            $route->any('uploadimage','\App\Packages\UEditor\Controller\UEditorController@image');
+            $route->any('gate','\App\Packages\UEditor\Controller\UEditorController@gate');
         });
     }
 }

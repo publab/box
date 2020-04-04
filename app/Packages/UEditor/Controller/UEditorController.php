@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Traits\ResponseTrait;
 use App\Packages\UEditor\Config\UEditor;
 use App\Packages\UEditor\Interfaces\UEditorInterface;
+use Illuminate\Http\Request;
 
 class UEditorController extends Controller
 {
@@ -30,10 +31,23 @@ class UEditorController extends Controller
     }
 
     /**
+     * 配置网关
+     * @param Request $request
+     * @return mixed
+     */
+    public function gate(Request $request){
+        return $this->exception(function () use ($request){
+            $action = $request->action ?? '';
+            return $this->success('only',$this->{$action}($request));
+        });
+
+    }
+
+    /**
      * 配置文件
      * @return array
      */
-    public function config(){
+    public function config(Request $request){
         return UEditor::index();
     }
 

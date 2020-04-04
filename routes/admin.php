@@ -20,6 +20,7 @@ Route::get('mail', ['as' => 'mail','uses' => 'IndexController@mail']);
 //token
 Route::post('token', ['as' => 'token','uses' => 'LoginController@token']);
 Route::post('refresh', ['as' => 'refresh','uses' => 'LoginController@refresh']);
+UEditor::route();
 
 Route::group(['middleware' => ['auth:admin']], function () {
     Upload::route();
