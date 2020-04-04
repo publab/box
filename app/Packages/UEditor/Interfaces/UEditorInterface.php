@@ -8,8 +8,15 @@
 
 namespace App\Packages\UEditor\Interfaces;
 
+use Illuminate\Http\UploadedFile;
 
-class UEditorInterface
+interface UEditorInterface
 {
+
+    /**
+     * @return mixed
+     * 图片上传
+     */
+    public function image($path,UploadedFile $file);
 
 }
