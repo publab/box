@@ -40,14 +40,13 @@ class UEditorController extends Controller
             $action = $request->action ?? '';
             return $this->success('only',$this->{$action}($request));
         });
-
     }
 
     /**
      * 配置文件
      * @return array
      */
-    public function config(Request $request){
+    private function config(Request $request){
         return UEditor::index();
     }
 
@@ -56,25 +55,27 @@ class UEditorController extends Controller
      * @return mixed
      * 图片上传
      */
-    public function image(Request $request)
+    private function uploadimage(Request $request)
     {
-        return $this->exception(function ()use($request){
 
-            $uploadFile = $request->file('file') ?? [];
+        $uploadFile = $request->file('file') ?? [];
 
-            $this->checkMimeTypes($uploadFile,[
-                'image/jpeg',
-                'image/png',
-                'image/gif',
-                'image/bmp',
-                'image/svg+xml',
-            ]);
+        $this->checkMimeTypes($uploadFile,[
+            'image/jpeg',
+            'image/png',
+            'image/gif',
+            'image/bmp',
+            'image/svg+xml',
+        ]);
 
-            $url = config('app.url').'/'.$this->editor->image('storage/images/'.date('Y/m/d'),$uploadFile);
-
-            return $this->success('上传成功',$url);
-
-        });
+        return [
+            "state"=> 'SUCCESS',
+            "title" => $uploadFile->getClientOriginalName(),
+            "original" => $uploadFile->getClientOriginalName(),
+            "type" => $uploadFile->getMimeType(),
+            "size" => $uploadFile->getClientSize(),
+            'url' => config('app.url').'/'.$this->editor->image('storage/ueditor/'.date('Y/m/d'),$uploadFile)
+        ];
     }
 
     /**
@@ -82,7 +83,7 @@ class UEditorController extends Controller
      * @param $files
      * @param $allowedTypes
      */
-    public function checkMimeTypes($file,$allowedTypes){
+    private function checkMimeTypes($file,$allowedTypes){
         if(!in_array($file->getMimeType(), $allowedTypes)){
             throw new \Exception('文件类型错误');
         }
