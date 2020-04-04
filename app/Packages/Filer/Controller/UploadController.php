@@ -39,12 +39,9 @@ class UploadController extends Controller
     {
         return $this->exception(function ()use($request){
 
-            $uploadFiles = $request->file('files') ?? [];
-            if($uploadFiles instanceof UploadedFile){
-                $uploadFiles = [$uploadFiles];
-            }
+            $uploadFile = $request->file('file') ?? [];
 
-            $this->checkMimeTypes($uploadFiles,[
+            $this->checkMimeTypes($uploadFile,[
                 'image/jpeg',
                 'image/png',
                 'image/gif',
@@ -52,11 +49,9 @@ class UploadController extends Controller
                 'image/svg+xml',
             ]);
 
-            $urls = [];
-            foreach ($uploadFiles as $file){
-                $urls[] = config('app.url').'/'.$this->upload->image('storage/images/'.date('Y/m/d'),$file);
-            }
-            return $this->success('上传成功',$urls);
+            $url = config('app.url').'/'.$this->upload->image('storage/images/'.date('Y/m/d'),$uploadFile);
+
+            return $this->success('上传成功',$url);
 
         });
     }
@@ -88,14 +83,12 @@ class UploadController extends Controller
      * @param $files
      * @param $allowedTypes
      */
-    public function checkMimeTypes($files,$allowedTypes){
-        collect($files)->each(function ($file)use($allowedTypes){
-            if(!in_array($file->getMimeType(), $allowedTypes)){
-                throw new \Exception('文件类型错误');
-            }
-            if(!$file->isValid()){
-                throw new \Exception('上传图片异常');
-            }
-        });
+    public function checkMimeTypes($file,$allowedTypes){
+        if(!in_array($file->getMimeType(), $allowedTypes)){
+            throw new \Exception('文件类型错误');
+        }
+        if(!$file->isValid()){
+            throw new \Exception('上传图片异常');
+        }
     }
 }
