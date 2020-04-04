@@ -22,6 +22,7 @@ Route::post('token', ['as' => 'token','uses' => 'LoginController@token']);
 Route::post('refresh', ['as' => 'refresh','uses' => 'LoginController@refresh']);
 
 Route::group(['middleware' => ['auth:admin']], function () {
+    Upload::route();
     Route::post('logout', ['as' => 'logout','uses' => 'LoginController@logout']);
     Route::post('userinfo', ['as' => 'userinfo','uses' => 'IndexController@userinfo']);
 
