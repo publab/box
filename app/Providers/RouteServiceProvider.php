@@ -35,10 +35,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        Route::options('/{all}', function() {
-            return \Response::make('', 200, ['Access-Control-Allow-Headers'=> '*']);
-        })->where(['all' => '.+']);
-
         $this->mapWebRoutes();
 
         $this->mapApiRoutes();
