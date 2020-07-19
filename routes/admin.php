@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::group(['prefix' => 'system', 'as' => 'system.', 'namespace' => 'System'], function () {
         Route::group(['prefix' => 'develop', 'as' => 'develop.', 'namespace' => 'Develop'], function () {
 
-            Route::any('permission', ['as' => 'permission','uses' => 'PermissionController@index']);
+            Route::post('permission', ['as' => 'permission','uses' => 'PermissionController@index']);
             Route::post('permission/create', ['as' => 'permission.create','uses' => 'PermissionController@create']);
             Route::post('permission/detail/{model}', ['as' => 'permission.detail','uses' => 'PermissionController@detail']);
             Route::post('permission/update/{model}', ['as' => 'permission.update','uses' => 'PermissionController@update']);
